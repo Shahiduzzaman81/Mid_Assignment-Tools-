@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Alice",
+    "comment": "Excellent service! Products arrived on time.",
+    "rating": 5,
+    "date": "2025-03-15"
+  },
+  {
+    "name": "Bob",
+    "comment": "Amazing quality at great prices.",
+    "rating": 5,
+    "date": "2025-03-10"
+  },
+  {
+    "name": "Tourist jiangly",
+    "comment": "Good experience, fast delivery.",
+    "rating": 4,
+    "date": "2025-03-05"
+  }
+]

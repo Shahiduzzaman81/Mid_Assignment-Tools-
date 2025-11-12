@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartShop</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+</head>
+<body>
+         <section class="">
+           <div class="flex pt-5 bg-red-400 fixed object-cover w-full h-22">
+                <h1 class="pl-12 text-2xl text-black-500"><i class="fa fa-shopping-cart"></i><b class="pl-2">SmartShop</b></h1>
+               <nav class="pl-80 flex justify-center">
+                <a href="#home" class="">Home</a>
+                <a href="#products" class="pl-10">Products</a>
+                <a href="#reviews" class="pl-10">Reviews</a>
+                <a href="#contacts" class="pl-10">Contacts</a>
+               </nav>
+                 <div class="pl-30">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span class="walletbalance">1000</span>
+                 </div>
+                 <div class="CartBazar">
+                    <i class="fa fa-shopping-cart pl-50 text-2xl"></i>
+                 </div>
+                <!-- <i class="fa fa-shopping-cart pl-100 text-2xl"></i> --> 
+       </div>
+         </section>
+      
+
+        <!-- Sliding Banner -->
+    <!-- <div class="flex flex-row items-center justify-between py-7">
+           
+         <img src="arrow.webp" class="w-100% h-15 rotate-180 left">
+    
+         <div class="overflow-hidden shadow-md">
+              <div class="flex slider transition-all ease-linear duration-1000">
+                     <img src="clothes.jpg" class="w-full object-cover" id="one">
+                     <img src="groceries.jpg" class="w-full object-cover" id="one">
+                     <img src="toys.jpg" class="w-full object-cover" id="one">
+                     <img src="things.jpg" class="w-full object-cover" id="one">
+             </div>
+         </div>
+          <img src="arrow.webp" class="w-100% h-15 right">
+    </div> -->
+<div class="carousel w-full py-20">
+  <div id="slide1" class="carousel-item relative w-full">
+    <img
+      src="clothes.jpg"
+      class="w-full" />
+    <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+      <a href="#slide4" class="btn btn-circle">❮</a>
+      <a href="#slide2" class="btn btn-circle">❯</a> 
+    </div>
+  </div>
+  <div id="slide2" class="carousel-item relative w-full">
+    <img
+      src="groceries.jpg"
+      class="w-full" />
+    <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+      <a href="#slide1" class="btn btn-circle">❮</a>
+      <a href="#slide3" class="btn btn-circle">❯</a>
+    </div>
+  </div>
+  <div id="slide3" class="carousel-item relative w-full">
+    <img
+      src="toys.jpg"
+      class="w-full" />
+    <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+      <a href="#slide2" class="btn btn-circle">❮</a>
+      <a href="#slide4" class="btn btn-circle">❯</a>
+    </div>
+  </div>
+  <div id="slide4" class="carousel-item relative w-full">
+    <img
+      src="things.jpg"
+      class="w-full" />
+    <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+      <a href="#slide3" class="btn btn-circle">❮</a>
+      <a href="#slide1" class="btn btn-circle">❯</a>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Cart Section -->
+    <section id="products" class="py-12 bg-white scroll-my-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-2">Our Products</h2>
+            <p class="text-gray-600 text-center mb-8">
+                Discover amazing products at great prices
+            </p>
+
+            <!-- Wrapper -->
+            <div class="flex flex-col lg:flex-row gap-6">
+
+
+                <div id="display-card"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 flex-grow basis-3/4">
+                    <!-- JS dynamically adds product cards here -->
+                </div>
+
+
+              <!-- CHANGED: fixed duplicate ids and added ids for subtotal and grand total -->
+<div class="basis-1/4 bg-green-100 rounded-lg p-4 shadow-lg">
+  <h2 class="text-center font-bold text-xl mb-2">My Cart</h2>
+  <hr class="mb-2">
+  <h3>Total Products: <span id="total-products">0</span></h3>
+  <h3>Price: <span id="price">0</span></h3>
+  <h3>Delivery Charge: <span id="delivery-charge">0</span></h3>
+  <hr class="my-2">
+  <h2>Subtotal Price: <span id="subtotal">0</span></h2> <!-- CHANGED id -->
+  <input type="text" id="couponCode" placeholder="Add Coupon Code" class="bg-white w-full mt-2 mb-2 p-2"> <!-- CHANGED id -->
+  <button id="applyCoupon" class="mt-2 w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition">Apply Coupon</button> <!-- CHANGED id -->
+  <h2 class="mt-2">Total Price: <span id="grandTotal">0</span></h2> <!-- CHANGED id -->
+  <button id="orderBtn" onclick="orderProducts()" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">Order Now</button>
+  <button id="addMoneyBtn" class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">Add Money</button> <!-- CHANGED id -->
+  <div id="details" class="mt-4"></div>
+</div>
+
+
+            </div>
+        </div>
+    </section>
+   
+    
+     <!-- Review Section -->
+      <!-- Reviews Section -->
+      <section id="reviews" class="container mx-auto px-4 py-16 scroll-mt-20">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">
+            Customer Reviews
+          </h2>
+          <p class="text-gray-600">What our customers say about us</p>
+        </div>
+
+        <div class="relative overflow-hidden">
+          <div
+            id="review-slider"
+            class="flex transition-transform duration-500 ease-in-out"
+          >
+            <!-- Review cards dynamically here -->
+          </div>
+
+          <!-- Buttons -->
+          <button
+            id="prevReview"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white text-gray-800 p-2 rounded-full shadow hover:bg-gray-100"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            id="nextReview"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-gray-800 p-2 rounded-full shadow hover:bg-gray-100"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+
+    <!-- Contact Section -->
+    <section id="contacts" class="scroll-mt-22">
+            <div class="">
+         <div class="id mt-10">
+            <h1 class="text-3xl text-center"><b>Contact Us</b></h1>
+         <p class="text-center text-2xl pt-10">Have questions? We'd love to hear from you . Send us a message and we'll respond as soon as possible.</p>
+        </div>
+     </div>
+    </section>
+     <!-- <div class="">
+          <h1 class="text-3xl">Get In Touch</h1>
+          <div class="inputv">
+          Name :
+          <input type="text" placeholder=" Your Name">
+          Email :
+          <input type="text" placeholder=" email123@gmail.com">
+          Message :
+          <input type="text" placeholder=" Your message...">
+          </div>
+     </div> -->
+
+       <!-- Get in Touch -->
+
+      <div class="lg:pl-20 pl-15 lg:mt-20 ml-13">
+        <p class="font-bold text-3xl text-center mr-25">Get In Touch</p>
+        <p class="">Name</p>
+        <input type="text" placeholder="Your Name" class="mt-2 pl-5 mb-5 rounded-lg lg:w-280 h-15 w-80">
+        <p class="">Email</p>
+        <input type="text" placeholder="Give me your Email" class="mt-2 pl-5 rounded-lg  lg:w-280 w-80 h-15">
+        <p class="mt-4">Message</p>
+        <input type="text" placeholder="Write your Message" class="mt-2 pl-5 rounded-lg  lg:w-280 h-28 w-80">
+        <br>
+        <button
+          class="border-2 border-gray-700 h-10 w-280 rounded-lg hover:border-blue-400 text-white bg-blue-500 h-15 mt-5"><i class="fa-solid fa-paper-plane pr-3"></i>Send
+          Message</button>
+      </div>
+     
+      <!-- Footer Section -->
+
+  <footer class="lg:flex justify-between bg-blue-500 mt-20">
+    <div class="mt-10 lg:ml-20 pl-3">
+      <h1 class="font-bold text-2xl">SmartShop<br>
+      <p class="text-white text-xl">Your trusted online shopping destination for quality products at great prices.</p></h1>
+      <p class="text-white pt-5">© 2025 Shoply. All rights reserved.</p>
+    </div>
+    <div class="flex justify-evenly">
+      <div class="lg:mr-30">
+        <h1 class="font-bold  lg:mt-10 text-2xl">Quick links</h1>
+        <div class="">
+          <nav>
+            <a href="#home" class="text-white">Home</a><br>
+            <a href="#products" class="text-white">Products</a><br>
+            <a href="#contacts" class="text-white">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="">
+        <h1 class="mt-10 lg:mr-15 ml-1 font-bold text-2xl">Follow Us</h1>
+        <div class="flex mr-20">
+          <div class="">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L258.2 544L258.2 398.2L205.4 398.2L205.4 320L258.2 320L258.2 286.3C258.2 199.2 297.6 158.8 383.2 158.8C399.4 158.8 427.4 162 438.9 165.2L438.9 236C432.9 235.4 422.4 235 409.3 235C367.3 235 351.1 250.9 351.1 292.2L351.1 320L434.7 320L420.3 398.2L351 398.2L351 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96z" />
+            </svg>
+          </div>
+          <div class="pl-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M453.2 112L523.8 112L369.6 288.2L551 528L409 528L297.7 382.6L170.5 528L99.8 528L264.7 339.5L90.8 112L236.4 112L336.9 244.9L453.2 112zM428.4 485.8L467.5 485.8L215.1 152L173.1 152L428.4 485.8z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <script src="code.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</body>
+</html>
